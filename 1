@@ -17,6 +17,11 @@ svn export --force https://github.com/pymumu/openwrt-smartdns/trunk/ package/lea
 svn export --force https://github.com/pymumu/luci-app-smartdns/branches/lede/ package/lean/luci-app-smartdns
 svn export --force https://github.com/kenzok8/small/trunk/ package/lean/small
 \rm -rf package/lean/small/luci-app-bypass package/lean/small/luci-app-vssr package/lean/small/luci-app-passwall2
+svn export --force https://github.com/sirpdboy/luci-app-chatgpt-web/trunk/ package/lean/luci-app-chatgpt-web
+svn export --force https://github.com/sirpdboy/luci-app-advanced/trunk/ package/lean/luci-app-advanced
+svn export --force https://github.com/sirpdboy/luci-app-autotimeset/trunk/ package/lean/luci-app-autotimeset
+sed -i 's/control"/system"/g' package/lean/luci-app-autotimeset/luasrc/controller/autotimeset.lua
+sed -i 's/control]/system]/g' package/lean/luci-app-autotimeset/luasrc/view/autotimeset/log.htm
 svn export --force https://github.com/kenzok8/openwrt-packages/trunk/luci-app-openclash package/lean/small/luci-app-openclash
 \rm -rf feeds/packages/net/socat feeds/luci/applications/luci-app-socat
 svn export --force https://github.com/xiangfeidexiaohuo/extra-ipk/trunk/op-socat package/lean/socat
@@ -24,11 +29,6 @@ svn export --force https://github.com/xiangfeidexiaohuo/extra-ipk/trunk/op-homeb
 \rm -rf feeds/packages/net/adguardhome feeds/luci/applications/luci-app-adguardhome
 svn export --force https://github.com/sirpdboy/sirpdboy-package/trunk/adguardhome package/lean/adguardhome
 svn export --force https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-adguardhome package/lean/luci-app-adguardhome
-svn export --force https://github.com/sirpdboy/luci-app-chatgpt-web/trunk/ package/lean/luci-app-chatgpt-web
-svn export --force https://github.com/sirpdboy/luci-app-advanced/trunk/ package/lean/luci-app-advanced
-svn export --force https://github.com/sirpdboy/luci-app-autotimeset/trunk/ package/lean/luci-app-autotimeset
-sed -i 's/control"/system"/g' package/lean/luci-app-autotimeset/luasrc/controller/autotimeset.lua
-sed -i 's/control]/system]/g' package/lean/luci-app-autotimeset/luasrc/view/autotimeset/log.htm
 svn export --force https://github.com/linkease/openwrt-app-actions/trunk/applications/luci-app-multiaccountdial package/lean/luci-app-multiaccountdial
 svn export --force https://github.com/linkease/istore/trunk/luci package/lean
 svn export --force https://github.com/linkease/istore/trunk/translations package/lean/translations
