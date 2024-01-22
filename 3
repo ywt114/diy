@@ -1,0 +1,36 @@
+# 删除替换默认源插件和添加插件
+# find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+# find ./ | grep Makefile | grep pdnsd-alt | xargs rm -f
+\rm -rf feeds/packages/net/v2ray-geodata feeds/packages/net/pdnsd-alt
+# \rm -rf feeds/packages/lang/golang
+# git clone --depth=1 -b 21.x https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
+git clone --depth=1 -b master https://github.com/sbwml/luci-app-alist package/lean/alist
+\rm -rf feeds/packages/net/mosdns feeds/luci/applications/luci-app-mosdns feeds/packages/utils/v2dat
+git clone --depth=1 -b v5 https://github.com/sbwml/luci-app-mosdns package/lean/mosdns
+\rm -rf feeds/luci/applications/luci-app-adbyby-plus
+git clone --depth=1 -b main https://github.com/ywt114/luci-app-adbyby-plus-lite package/lean/luci-app-adbyby-plus-lite
+\rm -rf feeds/packages/net/msd_lite
+git clone --depth=1 -b main https://github.com/ywt114/luci-app-msd_lite package/lean/msd_lite
+git clone --depth=1 -b master https://github.com/ywt114/luci-app-gpsysupgrade package/lean/luci-app-gpsysupgrade
+\rm -rf feeds/packages/net/smartdns feeds/luci/applications/luci-app-smartdns
+git clone --depth=1 -b master https://github.com/pymumu/openwrt-smartdns package/lean/smartdns
+git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns package/lean/luci-app-smartdns
+git clone --depth=1 -b master https://github.com/kenzok8/small package/lean/small
+\rm -rf package/lean/small/luci-app-bypass package/lean/small/luci-app-vssr package/lean/small/luci-app-passwall2
+git clone --depth=1 -b main https://github.com/sirpdboy/luci-app-chatgpt-web package/lean/luci-app-chatgpt-web
+git clone --depth=1 -b master https://github.com/sirpdboy/luci-app-advanced package/lean/luci-app-advanced
+git clone --depth=1 -b master https://github.com/sirpdboy/luci-app-autotimeset package/lean/luci-app-autotimeset
+sed -i 's/control"/system"/g' package/lean/luci-app-autotimeset/luasrc/controller/autotimeset.lua
+sed -i 's/control]/system]/g' package/lean/luci-app-autotimeset/luasrc/view/autotimeset/log.htm
+merge_package master https://github.com/kenzok8/openwrt-packages package/lean/small luci-app-openclash
+\rm -rf feeds/packages/net/socat feeds/luci/applications/luci-app-socat
+merge_package master https://github.com/xiangfeidexiaohuo/extra-ipk package/lean/socat op-socat
+merge_package master https://github.com/xiangfeidexiaohuo/extra-ipk package/lean/homebox op-homebox
+\rm -rf feeds/packages/net/adguardhome feeds/luci/applications/luci-app-adguardhome
+merge_package main https://github.com/sirpdboy/sirpdboy-package package/lean adguardhome luci-app-adguardhome
+merge_package main https://github.com/linkease/openwrt-app-actions package/lean applications/luci-app-multiaccountdial
+merge_package main https://github.com/linkease/istore package/lean translations luci/luci-app-store luci/luci-lib-taskd luci/luci-lib-xterm luci/taskd
+# sed -i 's/+luci-lib-ipkg/+luci-base/g' package/lean/luci-app-store/Makefile
+merge_package main https://github.com/linkease/nas-packages-luci package/lean luci/luci-app-ddnsto luci/luci-app-istorex luci/luci-app-linkease luci/luci-app-quickstart luci/luci-app-unishare luci/luci-lib-iform
+merge_package master https://github.com/linkease/nas-packages package multimedia
+merge_package master https://github.com/linkease/nas-packages package/network/services network/services/ddnsto network/services/linkease network/services/quickstart network/services/unishare network/services/webdav2
